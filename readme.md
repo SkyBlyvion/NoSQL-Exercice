@@ -37,4 +37,14 @@
  - docker exec -it cdamongo mongoimport --host localhost:27017 --db DBLP --collection publis --jsonArray --type json --file /datascript/dblp.json -u admin -p 'admin' --authenticationDatabase admin # import
  - use DBLP 
  - show collections # Renvoie publis
- - db.publis.find()
+
+ - db.publis.find({type:"Book"})
+ - db.publis.find({year:{$gte:2011}})
+ - db.publis.find({type:"Book", year:{$gte:2011}})
+
+ - db.publis.distinct("publisher")
+ - db.publis.distinct("author")
+ - db.publis.distinct("type")
+
+ - db.publis.aggregate([{$match:{authors:"Toru Ishida"}}, {$sort: {title:1, "pages.start":1 }}])
+ - db.publis.aggregate([{$match:{authors:"Toru Ishida"}}, {$sort: {title:1, "pages.start":1 }}, {$project: {title:1, pages:1}}])
