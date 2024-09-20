@@ -1,9 +1,9 @@
 import { MongoClient, ServerApiVersion } from "mongodb";
 import dotenv from "dotenv";
-dotenv.config("./config.env");
+dotenv.config({path: "./config.env"});
 
 // chargement config
-const URI = process.env.URI || "";
+const URI = process.env.MGBD_URI || "";
 
 const client = new MongoClient(URI, {
     serverApi: {
