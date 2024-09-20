@@ -5,6 +5,36 @@ volumes:
   mongocda:
 
 services:
+
+  # Serveur express
+  mernserver:
+    container_name: express
+    build:
+      context: ./docker/server
+      dockerfile: Dockerfile
+    ports:
+      - 5000:5000
+    volumes:
+      - ./server:/appserver
+    environment:
+      PORT: 5000
+    depends_on:
+      - mongocda
+    tty: true # console invisible pour garder actif le container
+
+  # Service pour le client
+  mernclient:
+    container_name: client
+    build:
+      context: ./docker/client
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    volumes:
+      - ./client:/appclient
+    environment:
+      CHOKIDAR_USEPOLLING: true
+    tty: true
   
   # Service de mongodb
   mongocda:
@@ -19,4 +49,4 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: admin
-      MONGO_INITDB_DATABASE: cdacfa
+      # MONGO_INITDB_DATABASE: cdacfa
