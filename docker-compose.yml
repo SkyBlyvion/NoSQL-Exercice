@@ -1,0 +1,22 @@
+version: '3.9'
+
+# Declaration du volume de persistance
+volumes:
+  mongocda:
+
+services:
+  
+  # Service de mongodb
+  mongocda:
+    container_name: cdamongo
+    image: mongo:latest
+    restart: always
+    ports:
+      - 27018:27017
+    volumes:
+      - mongocda:/data/db
+      - ./datascript:/datascript
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+      MONGO_INITDB_DATABASE: cdacfa
