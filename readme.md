@@ -1,5 +1,5 @@
 # Donner Droits 
- - sudo chown cd2groupea:cd2groupea datascript/
+ - sudo chown -R cd2groupea:cd2groupea datascript/
 
 # Creation collections - Commandes
 
@@ -48,3 +48,24 @@
 
  - db.publis.aggregate([{$match:{authors:"Toru Ishida"}}, {$sort: {title:1, "pages.start":1 }}])
  - db.publis.aggregate([{$match:{authors:"Toru Ishida"}}, {$sort: {title:1, "pages.start":1 }}, {$project: {title:1, pages:1}}])
+
+
+
+ # Projet aprés-midi MERN STACKS
+ - docker compose up --build -d
+ - docker exec -it express npm init -y
+
+ - cd2groupea@PC0917-010:~/Documents/CDA/Basenosql$ docker exec -it express npm run dev
+
+        > appserver@1.0.0 dev
+        > nodemon -L server.js
+
+        [nodemon] 3.1.6
+        [nodemon] to restart at any time, enter `rs`
+        [nodemon] watching path(s): *.*
+        [nodemon] watching extensions: js,mjs,cjs,json
+        [nodemon] starting `node server.js`
+        Le serveur est demarré sur le port 5000
+
+
+
