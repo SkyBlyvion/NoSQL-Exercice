@@ -54,9 +54,9 @@
  # Projet aprés-midi MERN STACKS
  - docker compose up --build -d
  - docker exec -it express npm init -y
+ - docker exec -it express npm install mongodb express cors nodemon dotenv
 
- - cd2groupea@PC0917-010:~/Documents/CDA/Basenosql$ docker exec -it express npm run dev
-
+ - docker exec -it express npm run dev
         > appserver@1.0.0 dev
         > nodemon -L server.js
 
@@ -67,5 +67,6 @@
         [nodemon] starting `node server.js`
         Le serveur est demarré sur le port 5000
 
+ - 
 
 
